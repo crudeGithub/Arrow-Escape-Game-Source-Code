@@ -39,15 +39,15 @@ Designed for speed, flexibility, and zero setup pain, this package gives you eve
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="README_ASSETS/shot1.png" width="30%" />
-  <img src="README_ASSETS/shot2.png" width="30%" />
-  <img src="README_ASSETS/shot3.png" width="30%" />
+  <img src="README_ASSETS/shot (1).png" width="30%" />
+  <img src="README_ASSETS/shot (2).png" width="30%" />
+  <img src="README_ASSETS/shot (3).png" width="30%" />
 </p>
 
 <p align="center">
-  <img src="README_ASSETS/shot4.png" width="30%" />
-  <img src="README_ASSETS/shot5.png" width="30%" />
-  <img src="README_ASSETS/shot6.png" width="30%" />
+  <img src="README_ASSETS/shot (4).png" width="30%" />
+  <img src="README_ASSETS/shot (5).png" width="30%" />
+  <img src="README_ASSETS/shot (6).png" width="30%" />
 </p>
 
 ---
