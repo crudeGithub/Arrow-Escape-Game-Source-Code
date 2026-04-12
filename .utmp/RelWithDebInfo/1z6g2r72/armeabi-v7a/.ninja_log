@@ -1,0 +1,23 @@
+# ninja log v5
+14	1577	7867150370514283	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	6354968c46fdc5d2
+86	321	7867150357825772	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	7aec6c64737680aa
+39	1314	7867150367836738	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	c5ee0ad2065c3fe1
+58	1278	7867150367237150	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	d1b516f3bd6e58e6
+51	1258	7867150367177153	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	8b2c134089b42eb2
+79	1389	7867150368616789	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	338ceeed9dad5826
+9	1280	7867150367477149	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	c9c20eb56fea00d9
+71	1194	7867150366476770	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	848017601bda7978
+321	532	7867150359551002	D:/New folder/SnakeArrow/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1z6g2r72/obj/armeabi-v7a/libswappywrapper.so	8cfcd8584bfaedd6
+64	1514	7867150369859938	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cb9f40e256a02e62
+1577	1649	7867150371275361	D:/New folder/SnakeArrow/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1z6g2r72/obj/armeabi-v7a/libgame.so	a40b8c2a46d7de1b
+68	412	7920712579027167	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	7aec6c64737680aa
+413	981	7920712584021929	D:/New folder/SnakeArrow/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1z6g2r72/obj/armeabi-v7a/libswappywrapper.so	8cfcd8584bfaedd6
+28	1780	7920712592810409	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	8b2c134089b42eb2
+35	1783	7920712592870207	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	848017601bda7978
+15	1883	7920712594032748	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	c9c20eb56fea00d9
+43	1948	7920712594804804	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	d1b516f3bd6e58e6
+8	1986	7920712595178367	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	c5ee0ad2065c3fe1
+59	2118	7920712596513773	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	338ceeed9dad5826
+51	2266	7920712598024079	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cb9f40e256a02e62
+22	2348	7920712598835341	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	6354968c46fdc5d2
+2349	2432	7920712599725733	D:/New folder/SnakeArrow/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1z6g2r72/obj/armeabi-v7a/libgame.so	a40b8c2a46d7de1b

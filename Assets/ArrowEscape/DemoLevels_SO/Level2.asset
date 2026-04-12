@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa460caee5b1744393d466c008f7355, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  gridDimensions: {x: 9, y: 8}
+  maxMoves: 10
+  arrows:
+  - occupiedPositions:
+    - {x: 4, y: 7}
+    - {x: 4, y: 6}
+    - {x: 4, y: 5}
+    - {x: 4, y: 4}
+    - {x: 4, y: 3}
+    - {x: 4, y: 2}
+    - {x: 4, y: 1}
+    - {x: 4, y: 0}
+    arrowColor: {r: 0.990566, g: 0.098122105, b: 0.11615778, a: 1}
+  - occupiedPositions:
+    - {x: 3, y: 6}
+    - {x: 2, y: 6}
+    - {x: 1, y: 6}
+    - {x: 0, y: 6}
+    - {x: 0, y: 5}
+    - {x: 0, y: 4}
+    - {x: 0, y: 3}
+    - {x: 0, y: 2}
+    - {x: 1, y: 2}
+    - {x: 2, y: 2}
+    - {x: 3, y: 2}
+    arrowColor: {r: 0.09803923, g: 0.24009813, b: 0.99215686, a: 1}
+  - occupiedPositions:
+    - {x: 7, y: 3}
+    - {x: 7, y: 4}
+    - {x: 7, y: 5}
+    arrowColor: {r: 0.7759594, g: 0.09803923, b: 0.99215686, a: 1}
+  - occupiedPositions:
+    - {x: 2, y: 5}
+    - {x: 2, y: 4}
+    - {x: 2, y: 3}
+    arrowColor: {r: 0.7759594, g: 0.09803923, b: 0.99215686, a: 1}
+  - occupiedPositions:
+    - {x: 6, y: 5}
+    - {x: 6, y: 4}
+    - {x: 6, y: 3}
+    arrowColor: {r: 0.93326014, g: 0.99215686, b: 0.09803923, a: 1}
+  - occupiedPositions:
+    - {x: 5, y: 3}
+    - {x: 5, y: 4}
+    - {x: 5, y: 5}
+    arrowColor: {r: 0.93326014, g: 0.99215686, b: 0.09803923, a: 1}
+  - occupiedPositions:
+    - {x: 3, y: 3}
+    - {x: 3, y: 4}
+    - {x: 3, y: 5}
+    arrowColor: {r: 0.93326014, g: 0.99215686, b: 0.09803923, a: 1}
+  - occupiedPositions:
+    - {x: 1, y: 5}
+    - {x: 1, y: 4}
+    - {x: 1, y: 3}
+    arrowColor: {r: 0.93326014, g: 0.99215686, b: 0.09803923, a: 1}
+  - occupiedPositions:
+    - {x: 5, y: 7}
+    - {x: 5, y: 6}
+    - {x: 6, y: 6}
+    - {x: 7, y: 6}
+    - {x: 8, y: 6}
+    - {x: 8, y: 5}
+    - {x: 8, y: 4}
+    - {x: 8, y: 3}
+    - {x: 8, y: 2}
+    - {x: 7, y: 2}
+    - {x: 6, y: 2}
+    - {x: 5, y: 2}
+    arrowColor: {r: 0.23529413, g: 0.9921569, b: 0.098039225, a: 1}

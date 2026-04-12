@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5877fc90c2a091640beec57a5191ab70, type: 3}
+  m_Name: Theme_ClassicSnake
+  m_EditorClassIdentifier: 
+  id: 3
+  themeName: SNAKE
+  price: 30
+  icon: {fileID: 21300000, guid: 3e9ae09321c35054a891a282f1fc8d95, type: 3}
+  isUnlockedByDefault: 1
+  visualType: 0
+  headPrefab: {fileID: 0}
+  headSprite: {fileID: 21300000, guid: 035e183152ba5cc409f88b7df0de9177, type: 3}
+  headScale: 1.38
+  headRotationOffset: 0
+  headSortingOrder: 2
+  showHeadOutline: 0
+  headOutlineColor: {r: 0, g: 0, b: 0, a: 1}
+  headOutlineScale: 1.2
+  overrideColor: 1
+  themeColor: {r: 1, g: 1, b: 1, a: 1}
+  lineSmoothness: 5
+  lineLayers:
+  - layerName: Core
+    width: 0.4
+    endWidth: 0.3
+    material: {fileID: 0}
+    color: {r: 0.3529412, g: 0.48627454, b: 0.9803922, a: 1}
+    useArrowColor: 0
+    textureMode: 0
+    sortingOrderOffset: 0
+    startOffset: 0
+    endOffset: 0
+    scrollSpeed: 0
+  bodySprite: {fileID: 0}
+  bodyScale: 1
+  rotateBodySprites: 0

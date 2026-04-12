@@ -1,0 +1,12 @@
+# ninja log v5
+78	582	7971565780775693	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	b693153ce99084bb
+583	2330	7971565792131201	D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6zt21663/obj/armeabi-v7a/libswappywrapper.so	20ba389c68412dc0
+29	2847	7971565803110945	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	408e1a0e1c4c7008
+1	2923	7971565804424804	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	c808af685389b5d4
+6	2979	7971565804728966	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ffb9b495148f7029
+39	3099	7971565806188651	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	608bc20743d6f174
+47	3230	7971565807309044	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	fbcc60e919f00d8c
+63	3277	7971565807909546	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	2fc078a2923e5580
+21	3297	7971565807979550	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	263ce23a7f369553
+15	3599	7971565811190321	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	98e8763de531a983
+3599	3676	7971565812004716	D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6zt21663/obj/armeabi-v7a/libgame.so	86707739fd0c258b

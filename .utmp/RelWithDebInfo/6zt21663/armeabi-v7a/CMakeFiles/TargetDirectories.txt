@@ -1,0 +1,8 @@
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/GameActivity/CMakeFiles/game.dir
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/GameActivity/CMakeFiles/edit_cache.dir
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/GameActivity/CMakeFiles/rebuild_cache.dir
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+D:/UnityGames/SSS/ArrowEscapeGameCode/SnakeArrowEscapeGame/SnakeArrow/.utmp/RelWithDebInfo/6zt21663/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
