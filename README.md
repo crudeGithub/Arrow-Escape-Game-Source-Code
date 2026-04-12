@@ -1,7 +1,7 @@
 # 🎯 Arrow Escape | Grid Based Puzzle Game Template
 
 <p align="center">
-  <img src="README_ASSETS/banner.png" width="100%" />
+  <img src="README_ASSETS/dO4Ryr.png" width="25%" />
 </p>
 
 **Arrow Escape** is a complete, plug and play Unity template for building fast, addictive, grid based arrow puzzle games.
@@ -19,8 +19,8 @@ Designed for speed, flexibility, and zero setup pain, this package gives you eve
 ## ▶ Watch Full Demo
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID">
-    <img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg" width="70%" />
+  <a href="https://www.youtube.com/watch?v=KDQ-QrMVOMw">
+    <img src="https://img.youtube.com/vi/KDQ-QrMVOMw/0.jpg" width="50%" />
   </a>
 </p>
 
