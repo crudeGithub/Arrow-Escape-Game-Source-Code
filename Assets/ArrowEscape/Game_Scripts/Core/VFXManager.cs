@@ -7,8 +7,8 @@ namespace Core
         public static VFXManager Instance { get; private set; }
 
         [Header("VFX Settings")]
-        public Color blockedFlashColor = Color.white;
-        public float flashDuration = 0.2f;
+        public Color blockedFlashColor = Color.red;
+        public float flashDuration = 0.3f;
 
         [Header("Particle Effects")]
         public GameObject winParticlePrefab;
@@ -64,38 +64,73 @@ namespace Core
 
         private System.Collections.IEnumerator FlashRoutine(ArrowUnit arrow)
         {
-            LineRenderer lr = arrow.GetComponent<LineRenderer>();
-            if (lr == null) yield break;
+            if (arrow == null) yield break;
 
-            Color originalStart = lr.startColor;
-            Color originalEnd = lr.endColor;
+            // Get all renderers in the arrow (lines and head/body sprites)
+            var lineRenderers = arrow.GetComponentsInChildren<LineRenderer>();
+            var spriteRenderers = arrow.GetComponentsInChildren<SpriteRenderer>();
 
-            // Also get the arrow head sprite renderer
-            SpriteRenderer headSr = null;
-            Transform headTransform = arrow.transform.Find("HeadVisual");
-            if (headTransform != null)
+            // Store original colors and states
+            var originalLineColors = new System.Collections.Generic.Dictionary<LineRenderer, (Color, Color)>();
+            foreach (var lr in lineRenderers)
             {
-                headSr = headTransform.GetComponent<SpriteRenderer>();
+                originalLineColors[lr] = (lr.startColor, lr.endColor);
             }
-            Color originalHeadColor = headSr != null ? headSr.color : Color.white;
 
-            // Flash both line and head
-            lr.startColor = blockedFlashColor;
-            lr.endColor = blockedFlashColor;
-            if (headSr != null) headSr.color = blockedFlashColor;
-
-            yield return new WaitForSeconds(flashDuration);
-
-            // Restore original colors
-            if (arrow != null && lr != null)
+            var originalSpriteColors = new System.Collections.Generic.Dictionary<SpriteRenderer, Color>();
+            foreach (var sr in spriteRenderers)
             {
-                lr.startColor = originalStart;
-                lr.endColor = originalEnd;
+                originalSpriteColors[sr] = sr.color;
             }
-            
-            if (headSr != null)
+
+            // Apply Flash Color
+            foreach (var lr in lineRenderers)
             {
-                headSr.color = originalHeadColor;
+                lr.startColor = blockedFlashColor;
+                lr.endColor = blockedFlashColor;
+            }
+            foreach (var sr in spriteRenderers)
+            {
+                sr.color = blockedFlashColor;
+            }
+
+            // Shake Effect
+            Vector3 originalLocalPos = arrow.transform.localPosition;
+            float elapsed = 0;
+            float shakeMagnitude = 0.15f;
+
+            while (elapsed < flashDuration)
+            {
+                float x = Random.Range(-1f, 1f) * shakeMagnitude;
+                float y = Random.Range(-1f, 1f) * shakeMagnitude;
+                
+                if (arrow != null)
+                    arrow.transform.localPosition = originalLocalPos + new Vector3(x, y, 0);
+
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            // Restore
+            if (arrow != null)
+            {
+                arrow.transform.localPosition = originalLocalPos;
+                
+                foreach (var lr in lineRenderers)
+                {
+                    if (lr != null && originalLineColors.ContainsKey(lr))
+                    {
+                        lr.startColor = originalLineColors[lr].Item1;
+                        lr.endColor = originalLineColors[lr].Item2;
+                    }
+                }
+                foreach (var sr in spriteRenderers)
+                {
+                    if (sr != null && originalSpriteColors.ContainsKey(sr))
+                    {
+                        sr.color = originalSpriteColors[sr];
+                    }
+                }
             }
         }
     }

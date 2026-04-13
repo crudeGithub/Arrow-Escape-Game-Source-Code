@@ -33,6 +33,8 @@ namespace UI
 
         public void Show()
         {
+            if (UIManager.Instance != null && UIManager.Instance.IsSequenceRunning) return;
+
             if (shopPanel != null) shopPanel.SetActive(true);
             
             // Check if Win Panel is active and hide it

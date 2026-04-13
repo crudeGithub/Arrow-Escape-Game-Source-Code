@@ -339,6 +339,7 @@ namespace Core
             {
                 Debug.Log("No moves remaining! Cannot move arrow.");
                 AudioManager.Instance?.PlayBlockedSound();
+                VFXManager.Instance?.PlayBlockedAnimation(this);
                 return;
             }
             

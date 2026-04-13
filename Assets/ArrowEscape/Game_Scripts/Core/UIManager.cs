@@ -36,8 +36,8 @@ namespace Core
         public Button backgroundToggleButton;
         public Button shopButton;
 
-
         private bool isSequenceRunning = false;
+        public bool IsSequenceRunning => isSequenceRunning;
 
         private void Awake()
         {
