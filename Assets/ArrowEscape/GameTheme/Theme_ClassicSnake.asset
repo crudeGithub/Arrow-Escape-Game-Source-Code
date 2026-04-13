@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   themeName: SNAKE
-  price: 30
+  price: 10
   icon: {fileID: 21300000, guid: 3e9ae09321c35054a891a282f1fc8d95, type: 3}
-  isUnlockedByDefault: 1
+  isUnlockedByDefault: 0
   visualType: 0
   headPrefab: {fileID: 0}
   headSprite: {fileID: 21300000, guid: 035e183152ba5cc409f88b7df0de9177, type: 3}

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   themeName: THICK
-  price: 70
+  price: 1000
   icon: {fileID: 21300000, guid: 29fa68633a0af004ba0a851505554606, type: 3}
-  isUnlockedByDefault: 1
+  isUnlockedByDefault: 0
   visualType: 0
   headPrefab: {fileID: 0}
   headSprite: {fileID: 21300000, guid: 7147cd20c05c33242888ca49f92d76ee, type: 3}

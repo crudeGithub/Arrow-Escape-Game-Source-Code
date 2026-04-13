@@ -92,8 +92,14 @@ namespace EditorTools
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Max Moves:");
-            currentLevelData.maxMoves = EditorGUILayout.IntField(currentLevelData.maxMoves);
+            int prevMoves = currentLevelData.maxMoves;
+            currentLevelData.maxMoves = currentLevelData.arrows.Count + 3;
+            if (prevMoves != currentLevelData.maxMoves)
+            {
+                EditorUtility.SetDirty(currentLevelData);
+            }
+            GUILayout.Label("Max Moves (Auto):");
+            EditorGUILayout.LabelField(currentLevelData.maxMoves.ToString());
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
@@ -111,6 +117,8 @@ namespace EditorTools
                 if (EditorUtility.DisplayDialog("Clear Level", "Are you sure you want to clear all arrows?", "Yes", "No"))
                 {
                     currentLevelData.arrows.Clear();
+                    isPainting = false;
+                    currentPaintingPath.Clear();
                     EditorUtility.SetDirty(currentLevelData);
                 }
             }
@@ -165,13 +173,65 @@ namespace EditorTools
                 Rect cellRect = new Rect(guiX + 2, guiY + 2, cellSize - 4, cellSize - 4);
                 EditorGUI.DrawRect(cellRect, arrow.arrowColor);
 
-                // Draw Head Indicator
-                if (i == 0)
+                if (i > 0)
                 {
-                    float headSize = cellSize * 0.5f;
-                    float offset = (cellSize - headSize) / 2f;
-                    EditorGUI.DrawRect(new Rect(guiX + offset, guiY + offset, headSize, headSize), Color.white);
+                    Vector2Int prevPos = arrow.occupiedPositions[i - 1];
+                    float pGuiX = gridRect.x + prevPos.x * cellSize;
+                    float pGuiY = gridRect.y + (currentLevelData.gridDimensions.y - 1 - prevPos.y) * cellSize;
+                    
+                    float minX = Mathf.Min(guiX, pGuiX) + 2;
+                    float maxX = Mathf.Max(guiX + cellSize, pGuiX + cellSize) - 2;
+                    float minY = Mathf.Min(guiY, pGuiY) + 2;
+                    float maxY = Mathf.Max(guiY + cellSize, pGuiY + cellSize) - 2;
+                    
+                    EditorGUI.DrawRect(new Rect(minX, minY, maxX - minX, maxY - minY), arrow.arrowColor);
                 }
+
+            }
+
+            // Draw Head Indicator After Body is Fully Connected
+            {
+                Vector2Int headPos = arrow.occupiedPositions[0];
+                float guiX = gridRect.x + headPos.x * cellSize;
+                float guiY = gridRect.y + (currentLevelData.gridDimensions.y - 1 - headPos.y) * cellSize;
+
+                Vector2Int dir = Vector2Int.up; // default up
+                if (arrow.occupiedPositions.Count > 1)
+                {
+                    dir = arrow.occupiedPositions[0] - arrow.occupiedPositions[1];
+                }
+
+                Handles.color = Color.white;
+                Vector3 center = new Vector3(guiX + cellSize / 2f, guiY + cellSize / 2f, 0);
+                float size = cellSize * 0.3f;
+                Vector3 p1, p2, p3;
+
+                if (dir.x > 0) // Right
+                {
+                    p1 = center + new Vector3(size, 0, 0);
+                    p2 = center + new Vector3(-size, size, 0);
+                    p3 = center + new Vector3(-size, -size, 0);
+                }
+                else if (dir.x < 0) // Left
+                {
+                    p1 = center + new Vector3(-size, 0, 0);
+                    p2 = center + new Vector3(size, size, 0);
+                    p3 = center + new Vector3(size, -size, 0);
+                }
+                else if (dir.y < 0) // Down
+                {
+                    p1 = center + new Vector3(0, size, 0);
+                    p2 = center + new Vector3(-size, -size, 0);
+                    p3 = center + new Vector3(size, -size, 0);
+                }
+                else // Up
+                {
+                    p1 = center + new Vector3(0, -size, 0);
+                    p2 = center + new Vector3(-size, size, 0);
+                    p3 = center + new Vector3(size, size, 0);
+                }
+
+                Handles.DrawAAConvexPolygon(new Vector3[] { p1, p2, p3 });
             }
         }
 
@@ -179,6 +239,25 @@ namespace EditorTools
         {
             Event e = Event.current;
             Rect gridRect = new Rect(Padding, Padding, currentLevelData.gridDimensions.x * cellSize, currentLevelData.gridDimensions.y * cellSize);
+
+            // Catch MouseUp globally so releasing mouse outside grid still saves the arrow!
+            if (e.rawType == EventType.MouseUp && e.button == 0 && isPainting)
+            {
+                isPainting = false;
+                if (currentPaintingPath.Count > 1) // Enforce minimum arrow length of 2 cells
+                {
+                    currentLevelData.arrows.Add(new ArrowDefinition
+                    {
+                        occupiedPositions = new List<Vector2Int>(currentPaintingPath),
+                        arrowColor = currentArrowColor
+                    });
+                    EditorUtility.SetDirty(currentLevelData);
+                }
+                currentPaintingPath.Clear();
+                Repaint();
+                e.Use();
+                return;
+            }
 
             if (!gridRect.Contains(e.mousePosition)) return;
 
@@ -191,6 +270,7 @@ namespace EditorTools
 
             if (e.type == EventType.MouseDown && e.button == 0)
             {
+                if (IsPositionOccupied(gridPos)) return;
                 // Start Painting
                 isPainting = true;
                 currentPaintingPath.Clear();
@@ -208,8 +288,8 @@ namespace EditorTools
                         // Check adjacency
                         if (Vector2Int.Distance(gridPos, lastPos) == 1) // Only adjacent
                         {
-                            // Check self-intersection
-                            if (!currentPaintingPath.Contains(gridPos))
+                            // Check self-intersection and block overlapping other arrows
+                            if (!currentPaintingPath.Contains(gridPos) && !IsPositionOccupied(gridPos))
                             {
                                 currentPaintingPath.Add(gridPos);
                                 Repaint();
@@ -219,30 +299,22 @@ namespace EditorTools
                 }
                 e.Use();
             }
-            else if (e.type == EventType.MouseUp && e.button == 0 && isPainting)
-            {
-                // Finish Painting
-                isPainting = false;
-                if (currentPaintingPath.Count > 0)
-                {
-                    // Save Arrow
-                    currentLevelData.arrows.Add(new ArrowDefinition
-                    {
-                        occupiedPositions = new List<Vector2Int>(currentPaintingPath),
-                        arrowColor = currentArrowColor
-                    });
-                    EditorUtility.SetDirty(currentLevelData);
-                }
-                currentPaintingPath.Clear();
-                Repaint();
-                e.Use();
-            }
             else if (e.type == EventType.MouseDown && e.button == 1)
             {
                 // Right Click: Delete Arrow
                 RemoveArrowAt(gridPos);
                 e.Use();
             }
+        }
+
+        private bool IsPositionOccupied(Vector2Int pos)
+        {
+            foreach (var arr in currentLevelData.arrows)
+            {
+                if (arr.occupiedPositions != null && arr.occupiedPositions.Contains(pos))
+                    return true;
+            }
+            return false;
         }
 
         private void RemoveArrowAt(Vector2Int pos)

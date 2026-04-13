@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   themeName: OUTLINE
-  price: 10
+  price: 750
   icon: {fileID: 21300000, guid: bc21dbbe2db9d784d883b055498847b0, type: 3}
-  isUnlockedByDefault: 1
+  isUnlockedByDefault: 0
   visualType: 0
   headPrefab: {fileID: 0}
   headSprite: {fileID: 21300000, guid: 7147cd20c05c33242888ca49f92d76ee, type: 3}

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   themeName: NEON
-  price: 50
+  price: 500
   icon: {fileID: 21300000, guid: 4f142963f946ad24fbe10a5e45e8870f, type: 3}
-  isUnlockedByDefault: 1
+  isUnlockedByDefault: 0
   visualType: 0
   headPrefab: {fileID: 0}
   headSprite: {fileID: 21300000, guid: 7147cd20c05c33242888ca49f92d76ee, type: 3}

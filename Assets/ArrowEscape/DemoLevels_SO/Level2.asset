@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   gridDimensions: {x: 9, y: 8}
-  maxMoves: 10
+  maxMoves: 12
   arrows:
   - occupiedPositions:
     - {x: 4, y: 7}

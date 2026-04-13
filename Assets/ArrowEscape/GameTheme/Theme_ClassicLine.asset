@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   themeName: CLASSIC
-  price: 20
+  price: 500
   icon: {fileID: 21300000, guid: 68e35baff2c6e81499886f738463b8fa, type: 3}
   isUnlockedByDefault: 1
   visualType: 0
