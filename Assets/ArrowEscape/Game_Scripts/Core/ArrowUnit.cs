@@ -6,8 +6,8 @@ namespace Core
 {
     public class ArrowUnit : MonoBehaviour
     {
-        // Event to notify when this arrow is moved
-        public System.Action OnArrowMoved;
+        // Event to notify when this arrow is moved (bool indicating if it was a valid move)
+        public System.Action<bool> OnArrowMoved;
         
         [Header("Theme Settings")]
         [Tooltip("Assign an Arrow Theme to override visuals.")]
@@ -345,10 +345,11 @@ namespace Core
             
             if (!isMoving)
             {
+                bool isClear = CheckPathClear();
                 // Notify that a move is being made (counts even if blocked)
-                OnArrowMoved?.Invoke();
+                OnArrowMoved?.Invoke(isClear);
                 
-                if (CheckPathClear())
+                if (isClear)
                 {
                     AudioManager.Instance?.PlayMoveSound();
                     

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Data;
 using TMPro;
+using UnityEngine.UI;
 
 namespace Core
 {
@@ -28,9 +29,9 @@ namespace Core
         public GameObject dotPrefab; // Prefab for the background dot
         public GridCelebration gridCelebration; // Handles dot visuals and celebration
 
-        [Header("UI (Optional)")]
-        public TextMeshProUGUI movesText;
-        public TextMeshProUGUI levelText;
+        public enum GameWinMode { Moves, Hearts }
+        [Header("Game Mode / Win Condition")]
+        public GameWinMode gameWinMode = GameWinMode.Moves;
 
         public GridSystem GridSystem => gridSystem;
         private GridSystem gridSystem;
@@ -51,13 +52,6 @@ namespace Core
 
         void Start()
         {
-            // Auto-assign UI references to UIManager if they are set here but not there
-            if (UIManager.Instance != null)
-            {
-                if (UIManager.Instance.movesText == null) UIManager.Instance.movesText = movesText;
-                if (UIManager.Instance.levelText == null) UIManager.Instance.levelText = levelText;
-            }
-
             LoadData();
 
             if (levels.Count > 0)
@@ -68,9 +62,12 @@ namespace Core
 
         public bool CanMakeMove()
         {
+            if (gameWinMode == GameWinMode.Hearts)
+                return heartsRemaining > 0;
             return movesRemaining > 0;
         }
 
+        private int heartsRemaining = 3;
         public bool IsGameActive { get; private set; }
 
         private Vector3 defaultCameraPos;
@@ -100,6 +97,17 @@ namespace Core
             movesRemaining = levelData.maxMoves;
             totalArrows = levelData.arrows.Count;
             IsGameActive = true;
+
+            if (gameWinMode == GameWinMode.Moves)
+            {
+                UIManager.Instance?.SetGameModeUI(gameWinMode);
+            }
+            else
+            {
+                heartsRemaining = 3;
+                UIManager.Instance?.SetGameModeUI(gameWinMode);
+                UIManager.Instance?.UpdateHeartsUI(heartsRemaining);
+            }
 
             // Initialize grid system
             gridSystem = new GridSystem(levelData.gridDimensions.x, levelData.gridDimensions.y);
@@ -210,13 +218,34 @@ namespace Core
 
 
 
-        public void OnArrowMoved()
+        public void OnArrowMoved(bool isSuccessful)
         {
-            movesRemaining--;
-            UpdateUI();
-            Debug.Log($"Move made! Moves remaining: {movesRemaining}");
-            if (movesRemaining == 0)
-                Debug.LogWarning("Out of moves! No more arrows can be moved.");
+            if (gameWinMode == GameWinMode.Moves)
+            {
+                movesRemaining--;
+                UpdateUI();
+                Debug.Log($"Move made! Moves remaining: {movesRemaining}");
+                if (movesRemaining == 0)
+                    Debug.LogWarning("Out of moves! No more arrows can be moved.");
+            }
+            else
+            {
+                // Heart based mode
+                if (!isSuccessful)
+                {
+                    heartsRemaining--;
+                    UIManager.Instance?.UpdateHeartsUI(heartsRemaining);
+                    Debug.Log($"Wrong Move! Hearts remaining: {heartsRemaining}");
+                    
+                    if (heartsRemaining <= 0)
+                    {
+                        // Direct lose screen without waiting for other arrows
+                        Debug.Log("Out of hearts! Level Failed!");
+                        OnLevelLose();
+                        return; // prevent CheckGameState from running
+                    }
+                }
+            }
 
             // Cancel any previous checks and start a fresh repeated check
             CancelInvoke(nameof(CheckGameState));
@@ -268,7 +297,7 @@ namespace Core
             }
 
             // 3. If nothing is moving and we haven't won, check Lose Condition
-            if (movesRemaining <= 0)
+            if (gameWinMode == GameWinMode.Moves && movesRemaining <= 0)
             {
                 CancelInvoke(nameof(CheckGameState));
                 Debug.Log("Out of moves! Level Failed!");

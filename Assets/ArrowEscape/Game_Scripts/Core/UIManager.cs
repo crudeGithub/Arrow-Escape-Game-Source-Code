@@ -11,10 +11,15 @@ namespace Core
 
         [Header("In-Game UI")]
         public GameObject inGameUI;
+        public GameObject movesUIObject;
         public TextMeshProUGUI movesText;
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI coinText; // New Coin Text
         public Transform coinIconTransform; // Target for coin animation
+
+        [Header("Hearts UI")]
+        public GameObject heartUIObj;
+        public Image[] heartImages;
 
         [Header("Panels")]
         public GameObject winPanel;
@@ -151,6 +156,34 @@ namespace Core
             {
                 levelText.text = $"Level {level}";
                 StartCoroutine(AnimatePopup(levelText.transform, 0.2f));
+            }
+        }
+
+        public void SetGameModeUI(LevelManager.GameWinMode mode)
+        {
+            if (mode == LevelManager.GameWinMode.Moves)
+            {
+                if (movesUIObject != null) movesUIObject.SetActive(true);
+                if (heartUIObj != null) heartUIObj.SetActive(false);
+            }
+            else
+            {
+                if (movesUIObject != null) movesUIObject.SetActive(false);
+                if (heartUIObj != null) heartUIObj.SetActive(true);
+            }
+        }
+
+        public void UpdateHeartsUI(int heartsRemaining)
+        {
+            if (heartImages != null)
+            {
+                for (int i = 0; i < heartImages.Length; i++)
+                {
+                    if (heartImages[i] != null)
+                    {
+                        heartImages[i].enabled = (i < heartsRemaining);
+                    }
+                }
             }
         }
 

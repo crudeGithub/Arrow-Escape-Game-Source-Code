@@ -27,8 +27,11 @@ namespace Core
             }
         }
 
+        private System.Collections.Generic.HashSet<ArrowUnit> flashingArrows = new System.Collections.Generic.HashSet<ArrowUnit>();
+
         public void PlayBlockedAnimation(ArrowUnit arrow)
         {
+            if (arrow == null || flashingArrows.Contains(arrow)) return;
             StartCoroutine(FlashRoutine(arrow));
         }
 
@@ -65,6 +68,8 @@ namespace Core
         private System.Collections.IEnumerator FlashRoutine(ArrowUnit arrow)
         {
             if (arrow == null) yield break;
+            
+            flashingArrows.Add(arrow);
 
             // Get all renderers in the arrow (lines and head/body sprites)
             var lineRenderers = arrow.GetComponentsInChildren<LineRenderer>();
@@ -106,6 +111,8 @@ namespace Core
                 
                 if (arrow != null)
                     arrow.transform.localPosition = originalLocalPos + new Vector3(x, y, 0);
+                else
+                    break;
 
                 elapsed += Time.deltaTime;
                 yield return null;
@@ -132,6 +139,10 @@ namespace Core
                     }
                 }
             }
+            
+            // Allow flashing again
+            flashingArrows.Remove(arrow);
         }
     }
 }
+

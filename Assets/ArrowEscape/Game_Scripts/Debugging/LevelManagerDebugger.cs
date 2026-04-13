@@ -75,25 +75,7 @@ namespace Debugging
                 }
             }
             
-            // Check UI references
-            if (levelManager.movesText != null)
-            {
-                Debug.Log("✅ Moves Text UI assigned");
-            }
-            else
-            {
-                Debug.Log("ℹ️ Moves Text UI not assigned (optional)");
-            }
-            
-            if (levelManager.levelText != null)
-            {
-                Debug.Log("✅ Level Text UI assigned");
-            }
-            else
-            {
-                Debug.Log("ℹ️ Level Text UI not assigned (optional)");
-            }
-            
+
             Debug.Log($"Current Level Index: {levelManager.currentLevelIndex}");
             Debug.Log("=== END VERIFICATION ===");
         }
