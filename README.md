@@ -1,6 +1,12 @@
 # 🎯 Arrow Escape | Grid Based Puzzle Game Template
 
 <p align="center">
+  <a href="https://discord.gg/QfaRDxcQkM">
+    <img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" />
+  </a>
+</p>
+
+<p align="center">
   <img src="README_ASSETS/dO4Ryr.png" width="25%" />
 </p>
 
